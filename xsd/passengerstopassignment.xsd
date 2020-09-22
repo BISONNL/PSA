@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="dataownercode" type="xs:string"/>
+  <xs:element name="userstopcode" type="xs:string"/>
+  <xs:element name="validfrom" type="xs:string"/>
+  <xs:element name="userstopcodedata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dataownercode"/>
+        <xs:element ref="userstopcode"/>
+        <xs:element ref="validfrom"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quaycode" type="xs:string"/>
+  <xs:element name="userstopcodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="userstopcodedata" maxOccurs="unbounded" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="quaycode"/>
+        <xs:element ref="userstopcodes"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quays">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="quay" maxOccurs="unbounded" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="export">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="quays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
