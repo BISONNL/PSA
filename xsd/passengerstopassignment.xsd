@@ -8,6 +8,7 @@
 <!-- Historie:                                                                               -->
 <!--       8.0.0 (okt.2015): Initiële versie                                                 -->
 <!--       8.0.1 (jun.2020): Optionele validthru toegevoegd aan userstopcodedata             -->
+<!--       8.1.0 (okt.2022): toevoegen StopPlaces (tbv stations) en QuayRef en StopPlaceRef  -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="8.0.1">
  <xs:element name="dataownercode" type="xs:string"/>
@@ -25,7 +26,10 @@
   </xs:complexType>
  </xs:element>
  <xs:element name="quaycode" type="xs:string"/>
- <xs:element name="userstopcodes">
+  <xs:element name="quayref" type="xs:string"/>
+ <xs:element name="stopplacecode" type="xs:string"/>
+ <xs:element name="stopplaceref" type="xs:string"/>
+<xs:element name="userstopcodes">
   <xs:complexType>
    <xs:sequence>
     <xs:element ref="userstopcodedata" minOccurs="1" maxOccurs="unbounded"/>
@@ -36,6 +40,7 @@
   <xs:complexType>
    <xs:sequence>
     <xs:element ref="quaycode"/>
+    <xs:element ref="quayref"/>    
     <xs:element ref="userstopcodes"/>
    </xs:sequence>
   </xs:complexType>
@@ -47,10 +52,27 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
+  <xs:element name="stopplace">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="stopplacecode"/>
+    <xs:element ref="stopplaceref"/>    
+    <xs:element ref="userstopcodes"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name="stopplaces">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="stopplace" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
  <xs:element name="export">
   <xs:complexType>
    <xs:sequence>
     <xs:element ref="quays"/>
+    <xs:element ref="stopplaces"/>
    </xs:sequence>
   </xs:complexType>
  </xs:element>
