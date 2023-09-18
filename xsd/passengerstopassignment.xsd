@@ -26,10 +26,10 @@
   </xs:complexType>
  </xs:element>
  <xs:element name="quaycode" type="xs:string"/>
-  <xs:element name="quayref" type="xs:string"/>
+ <xs:element name="quayref" type="xs:string"/>
  <xs:element name="stopplacecode" type="xs:string"/>
  <xs:element name="stopplaceref" type="xs:string"/>
-<xs:element name="userstopcodes">
+ <xs:element name="userstopcodes">
   <xs:complexType>
    <xs:sequence>
     <xs:element ref="userstopcodedata" minOccurs="1" maxOccurs="unbounded"/>
@@ -41,6 +41,8 @@
    <xs:sequence>
     <xs:element ref="quaycode"/>
     <xs:element ref="quayref"/>    
+	<xs:element ref="stopplacecode"/>
+    <xs:element ref="stopplaceref"/>    
     <xs:element ref="userstopcodes"/>
    </xs:sequence>
   </xs:complexType>
